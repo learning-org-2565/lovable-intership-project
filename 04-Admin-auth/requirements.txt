@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+pydantic
+motor  # an async MongoDB Python driver
+python-multipart  # needed for handling form-data file uploads

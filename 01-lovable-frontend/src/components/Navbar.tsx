@@ -28,7 +28,7 @@ const Navbar = () => {
             <Link to="/signin">
               <Button variant="outline">Sign In</Button>
             </Link>
-          </div>
+          </div>    
         </div>
       </div>
     </nav>

@@ -12,7 +12,7 @@ const Hero = () => {
             </h1>
             <p className="text-lg md:text-xl mb-8 opacity-90">
               Join our comprehensive internship programs and master the art of DevOps with
-              hands-on experience and expert mentorship.
+              hands-on experience and expert mentorship Arun.
             </p>
             <div className="flex gap-4">
               <Button asChild size="lg" variant="outline" className="bg-white text-primary hover:bg-gray-100">
