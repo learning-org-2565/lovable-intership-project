@@ -1,21 +1,9 @@
+import React from "react";
 import { Check } from "lucide-react";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
-import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
-import React, { useEffect, useState } from "react";
-import { getInternships, enrollUser } from "@/lib/api";
-import Internships from "@/pages/Internships";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
-
-interface Internship {
-  id: string;
-  title: string;
-  description: string;
-  price: number;
-}
-
-
+// Hardcoded internship data
 const programs = [
   {
     id: "basic",
@@ -59,41 +47,11 @@ const programs = [
 ];
 
 const InternshipPrograms = () => {
-  const navigate = useNavigate();
-
-  // const handleEnrollClick = (program: typeof programs[0]) => {
-  //   // For now, we'll just redirect to sign in since we don't have auth yet
-  //   toast.info("Please sign in to continue enrollment");
-  //   navigate("/signin", { 
-  //     state: { 
-  //       returnTo: "/apply",
-  //       programId: program.id 
-  //     } 
-  //   });
-  // };
-  const [internships, setInternships] = useState<Internship[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getInternships()
-      .then((data) => setInternships(data))
-      .catch((error) => console.error("Error fetching internships:", error))
-      .finally(() => setLoading(false));
-  }, []);
-
-  const handleEnroll = (internshipId: string) => {
-    const userId = "sample-user-123"; // Replace with real user ID
-    enrollUser(userId, internshipId)
-      .then(() => alert("Enrollment Successful!"))
-      .catch(() => alert("Error enrolling in internship"));
+  const handleEnroll = (programId: string) => {
+    alert(`Enrolling in ${programId} internship!`);
   };
 
-  if (loading) return <p>Loading internships...</p>;
-
-  
-
   return (
-    
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -101,32 +59,30 @@ const InternshipPrograms = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {programs.map((program) => (
-            <Card key={program.title} className="relative">
+            <Card key={program.id} className="relative">
               <CardHeader>
                 <CardTitle>{program.title}</CardTitle>
-                <CardDescription>{program.description}</CardDescription>
+                <p>{program.description}</p>
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold text-primary mb-6">
                   {program.price}
-                  <button onClick={() => handleEnroll(program.id)}>Enroll Now</button>
                 </div>
-                <ul className="space-y-3">
-                  {program.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-green-500 mt-0.5" />
+                <ul className="space-y-2 mb-4">
+                  {program.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-green-500" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
-              </CardContent>
-              <CardFooter>
-                <Button 
+                <Button
                   className="w-full bg-primary hover:bg-primary/90"
+                  onClick={() => handleEnroll(program.id)}
                 >
                   Enroll Now
                 </Button>
-              </CardFooter>
+              </CardContent>
             </Card>
           ))}
         </div>

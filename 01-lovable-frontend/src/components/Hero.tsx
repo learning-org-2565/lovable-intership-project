@@ -15,10 +15,10 @@ const Hero = () => {
               hands-on experience and expert mentorship.
             </p>
             <div className="flex gap-4">
-              <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100">
+              <Button asChild size="lg" variant="outline" className="bg-white text-primary hover:bg-gray-100">
                 <Link to="/apply">Get Started</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+              <Button asChild size="lg" variant="outline" className="bg-white text-primary hover:bg-gray-100">
                 <Link to="/internships">Learn More</Link>
               </Button>
             </div>

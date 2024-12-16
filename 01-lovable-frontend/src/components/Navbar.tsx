@@ -19,6 +19,12 @@ const Navbar = () => {
             <Link to="/apply" className="text-gray-600 hover:text-primary">
               Apply
             </Link>
+            <Link to="/blog" className="text-gray-600 hover:text-primary">
+              Blog
+            </Link>
+            <Link to="/admin">
+              <Button variant="outline">Admin</Button>
+            </Link>
             <Link to="/signin">
               <Button variant="outline">Sign In</Button>
             </Link>
